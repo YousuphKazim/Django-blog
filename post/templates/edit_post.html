@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Edit Post | EcoSphere
+{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>Edit Post</h1>
+
+    <p class="form-subtitle">
+        Update your blog post.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            <label for="{{ form.title.id_for_label }}">
+                Title
+            </label>
+
+            {{ form.title }}
+
+            <p style="color:red;">
+                {{ form.title.errors }}
+            </p>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.image.id_for_label }}">
+                Featured Image
+            </label>
+
+            {% if post.image %}
+
+                <div style="margin-bottom:15px;">
+
+                    <img src="{{ post.image.url }}"
+                         alt="{{ post.title }}"
+                         style="width:220px;
+                                border-radius:10px;
+                                box-shadow:0 4px 10px rgba(0,0,0,.15);">
+
+                </div>
+
+            {% endif %}
+
+            {{ form.image }}
+
+            <p style="color:red;">
+                {{ form.image.errors }}
+            </p>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.content.id_for_label }}">
+                Content
+            </label>
+
+            {{ form.content }}
+
+            <p style="color:red;">
+                {{ form.content.errors }}
+            </p>
+
+        </div>
+
+        <div class="button-group">
+
+            <button type="submit" class="create-btn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Update Post
+
+            </button>
+
+            <a href="{% url 'all_posts' %}" class="cancel-btn">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

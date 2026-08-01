@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Delete Post | EcoSphere
+{% endblock %}
+
+{% block content %}
+
+<div class="delete-card">
+
+    <h1>
+
+        <i class="fa-solid fa-triangle-exclamation"></i>
+
+        Delete Post
+
+    </h1>
+
+    <p>
+
+        Are you sure you want to permanently delete this post?
+
+    </p>
+
+    <h2>
+
+        "{{ post.title }}"
+
+    </h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="button-group">
+
+            <button type="submit" class="delete-btn">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Yes, Delete
+
+            </button>
+
+            <a href="{% url 'all_posts' %}" class="cancel-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

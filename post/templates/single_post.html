@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+{{ post.title }} | EcoSphere
+{% endblock %}
+
+{% block content %}
+
+<div class="single-post-container">
+
+    {% if post.image %}
+
+        <img src="{{ post.image.url }}"
+             alt="{{ post.title }}"
+             class="single-post-image">
+
+    {% endif %}
+
+    <div class="single-post-content">
+
+        <h1 class="single-post-title">
+
+            {{ post.title }}
+
+        </h1>
+
+        <p class="single-post-date">
+
+            <i class="fa-regular fa-calendar"></i>
+
+            {{ post.created_at }}
+
+        </p>
+
+        <hr>
+
+        <div class="single-post-body">
+
+            {{ post.content|linebreaks }}
+
+        </div>
+
+        <a href="{% url 'all_posts' %}" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Posts
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

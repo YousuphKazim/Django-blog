@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Blog Posts | EcoSphere
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Latest Articles</h1>
+
+    <p>
+        Stay up to date with our latest articles on climate change,
+        renewable energy, and sustainable innovation.
+        Explore expert insights, emerging trends,
+        and practical ideas for a greener future.
+    </p>
+
+</section>
+
+{% for post in posts %}
+
+<div class="post-card">
+
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+    {% endif %}
+
+    <div class="post-body">
+
+        <small>
+
+            <i class="fa-regular fa-calendar"></i>
+
+            {{ post.created_at }}
+
+        </small>
+
+        <h2>{{ post.title }}</h2>
+
+        <p>
+
+            {{ post.content }}
+
+        </p>
+
+        <div class="post-actions">
+
+            <a href="{% url 'single_post' post.id %}" title="View Post">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </a>
+
+            <a href="{% url 'edit_post' post.id %}" title="Edit Post">
+
+                <i class="fa-solid fa-pen"></i>
+
+            </a>
+
+            <a href="{% url 'delete_post' post.id %}" title="Delete Post">
+
+                <i class="fa-solid fa-trash"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="empty-post">
+
+    <i class="fa-solid fa-newspaper"></i>
+
+    <h2>No Posts Yet</h2>
+
+    <p>
+
+        Create your first blog post.
+
+    </p>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home | EcoSphere
+{% endblock %}
+
+{% block content %}
+
+<section class="landing-hero">
+
+    <h1>
+
+        Welcome to <span>EcoSphere</span>
+
+    </h1>
+
+    <p>
+
+        Discover the science shaping our planet and beyond.
+        Explore insightful articles on climate change,
+        renewable energy, and the innovations driving a more sustainable future.
+
+    </p>
+
+    <div class="landing-buttons">
+
+        <a href="{% url 'all_posts' %}" class="hero-btn">
+
+            <i class="fa-solid fa-book-open"></i>
+
+            View Blog Posts
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
