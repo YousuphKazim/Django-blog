@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+My Profile | EcoSphere
+{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>
+
+        <i class="fa-solid fa-user-circle"></i>
+
+        My Profile
+
+    </h1>
+
+    <p class="form-subtitle">
+
+        Manage your account information.
+
+    </p>
+
+    <div class="profile-card">
+
+        <div class="profile-avatar">
+
+            <i class="fa-solid fa-circle-user"></i>
+
+        </div>
+
+        <div class="profile-info">
+
+            <p>
+
+                <strong>Username:</strong>
+
+                {{ request.user.username }}
+
+            </p>
+
+            <p>
+
+                <strong>Date Joined:</strong>
+
+                {{ request.user.date_joined|date:"F d, Y" }}
+
+            </p>
+
+            <p>
+
+                <strong>Total Blog Posts:</strong>
+
+                {{ total_posts }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            <label>First Name</label>
+
+            {{ form.first_name }}
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Last Name</label>
+
+            {{ form.last_name }}
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Email Address</label>
+
+            {{ form.email }}
+
+        </div>
+
+        <div class="button-group">
+
+            <button type="submit" class="create-btn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Changes
+
+            </button>
+
+            <a href="{% url 'index_page' %}" class="cancel-btn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Home
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
